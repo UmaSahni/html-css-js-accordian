@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .accordian {
+            background-color: aliceblue;
+            padding: 4px 16px;
+            margin-bottom: 4px;
+        }
+
+        .question {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .answer {
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 0.5s;
+        }
+
+        /* .answer.active {
+             max-height: fit-content; iski wajise animation nahi hore. fix number define karo 
+            max-height: 200px;
+
+        } */
+        
+        .icon{
+            transition: transform 0.5s;
+        }
+
+        .icon.active {
+            transform: rotate(-180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>FAQ's</h2>
+
+    <div class="accordian">
+        <div class="question">
+            <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+            <i class="icon fa-solid fa-chevron-down">v</i>
+        </div>
+        <div class="answer">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt vitae deleniti velit unde dignissimos
+                nam!</p>
+        </div>
+    </div>
+
+    <div class="accordian">
+        <div class="question ">
+            <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+            <i class="icon fa-solid fa-chevron-down">v</i>
+        </div>
+        <div class="answer">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt vitae deleniti velit unde dignissimos
+                nam!
+            </p>
+        </div>
+    </div>
+
+    <div class="accordian">
+        <div class="question">
+            <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+            <i class="icon fa-solid fa-chevron-down">v</i>
+        </div>
+        <div class="answer">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt vitae deleniti velit unde dignissimos
+                nam!
+            </p>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    const acc = document.querySelectorAll(".accordian")
+    acc.forEach((el) => {
+        console.log(el)
+        const icon = el.querySelector(".icon")
+        // Peheli itration m pehela wala icon and dusri mai dusara wala.
+
+        const answer = el.querySelector(".answer")
+
+        el.addEventListener("click", ()=>{
+            if(icon.classList.contains("active")){
+                icon.classList.remove("active")
+                answer.style.maxHeight = null
+            }
+            else{
+                icon.classList.add("active")
+                answer.style.maxHeight = answer.scrollHeight + "px"
+
+                // By adding px it will give you a string.
+            }
+        })
+        
+    })
+</script>
+
+</html>
